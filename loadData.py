@@ -18,12 +18,12 @@ def circle(xy, radius, color="lightsteelblue", facecolor="green", alpha=.6, ax=N
     e.set_facecolor(facecolor)
     e.set_alpha(alpha)
 
-x = pd.read_csv('x.csv', index_col=0).values    # read x.csv into a pandas DataFrame and then convert to a numpy array
-y = pd.read_csv('y.csv', index_col=0).values    # x/y are 2D numpy arrays -> x[timestep, particle]
+x = pd.read_csv('aX_k100/x.csv', index_col=0).values    # read x.csv into a pandas DataFrame and then convert to a numpy array
+y = pd.read_csv('aX_k100/y.csv', index_col=0).values    # x/y are 2D numpy arrays -> x[timestep, particle]
 
 # you can also get velocities, accelerations, aD, aX, aS and avg_sled_velocity_x:
 
-# vx = pd.read_csv('vx.csv', index_col=0).values
+# vx = pd.read_csv('vx.csv', index_col=0).values        # must add path ex: aX_k100/... for these
 # vy = pd.read_csv('vy.csv', index_col=0).values
 
 # ax = pd.read_csv('ax.csv, index_col=0).values
