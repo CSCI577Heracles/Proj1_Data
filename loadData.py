@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-FRAME_RATE = 50
+FRAME_RATE = 60
 
 def circle(xy, radius, color="lightsteelblue", facecolor="green", alpha=.6, ax=None):
 
@@ -18,8 +18,8 @@ def circle(xy, radius, color="lightsteelblue", facecolor="green", alpha=.6, ax=N
     e.set_facecolor(facecolor)
     e.set_alpha(alpha)
 
-x = pd.read_csv('aX_k100/x.csv', index_col=0).values    # read x.csv into a pandas DataFrame and then convert to a numpy array
-y = pd.read_csv('aX_k100/y.csv', index_col=0).values    # x/y are 2D numpy arrays -> x[timestep, particle]
+x = pd.read_csv('N9_W40.0/x.csv', index_col=0).values    # read x.csv into a pandas DataFrame and then convert to a numpy array
+y = pd.read_csv('N9_W40.0/y.csv', index_col=0).values    # x/y are 2D numpy arrays -> x[timestep, particle]
 
 # you can also get velocities, accelerations, aD, aX, aS and avg_sled_velocity_x:
 
@@ -32,18 +32,21 @@ y = pd.read_csv('aX_k100/y.csv', index_col=0).values    # x/y are 2D numpy array
 # aD_x = pd.read_csv('aD_x.csv', index_col=0).values
 # aD_y = pd.read_csv('aD_y.csv', index_col=0).values
 
-# aX_x = pd.read_csv('aX_x.csv', index_col=0).values
+# aX_x = pd.read_csv('N9_W0.0/aX_x.csv', index_col=0).values
 # aX_y = pd.read_csv('aX_y.csv', index_col=0).values
 
 # aS_x = pd.read_csv('aS_x.csv', index_col=0).values
 # aS_y = pd.read_csv('aS_y.csv', index_col=0).values
 
-# avg_sled_vx = pd.read_csv('avg_sled_v_x.csv', index_col=0).values
+# avg_sled_vx = pd.read_csv('N9_W0.0/avg_sled_v_x.csv', index_col=0).values
 
-
+#plt.clf()
+#plt.plot(avg_sled_vx)
+#plt.show()
 # cheap animation below:
 
 # setup the plot
+
 plt.figure(1)
 plt.clf()
 plt.ion()
@@ -56,7 +59,7 @@ plt.show()
 # animation
 for timestep in range(np.size(x[:,0])):
     if timestep % FRAME_RATE == 0:
-
+        print "t=" + str(timestep*0.01)
         for particle in range(np.size(x[0])):
             circle((x[timestep, particle], y[timestep, particle]), radius=0.5*2**(1/6.), ax=ax, facecolor='green')
 
